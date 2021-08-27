@@ -1,0 +1,56 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+      </mat-card-header>
+  
+      <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+  
+        <mat-card-content>
+            <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Username</mat-label>
+                <input type="text" matInput formControlName="username" placeholder="Username"/>
+                <mat-error *ngIf="getControl.username.touched && getControl.username.invalid" class="text-danger">
+               </mat-error>
+                <mat-error *ngIf="getControl.username.errors.required">Username is Required
+                </mat-error>
+               </mat-form-field>
+
+               <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="email"/>
+                <mat-error *ngIf="getControl.email.touched && getControl.email.invalid" class="text-danger">
+               </mat-error>
+                <mat-error *ngIf="getControl.email.errors.required">email is Required
+                </mat-error>
+               </mat-form-field>
+
+               <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password" placeholder="password"/>
+                <mat-error *ngIf="getControl.password.touched && getControl.password.invalid" class="text-danger">
+               </mat-error>
+                <mat-error *ngIf="getControl.password.errors.required">Password is Required
+                </mat-error>
+               </mat-form-field>
+
+               <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Roles</mat-label>
+                <mat-select formControlName="role" >
+                  <mat-option *ngFor="let roles of Roles" [value]="roles">
+                    {{roles}}
+                  </mat-option>
+                </mat-select>
+                <!--<mat-error *ngIf="questionerForm.get('position').hasError('required')">
+                  You must make a selection
+                </mat-error>-->
+              </mat-form-field>
+  
+  
+        </mat-card-content>
+  
+        <button mat-stroked-button color="accent" class="btn-block" type="submit">Register</button>
+  
+      </form>
+    </mat-card>
+  </div>
